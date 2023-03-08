@@ -1,0 +1,14 @@
+#Navi {
+    margin: 5px;
+}
+
+#Navi .nav-item {
+    padding-right: 5px;
+}
+#Navi .nav-item a {
+    padding: 3px 5px;
+}
+
+#about-body p {
+    white-space: pre-line;
+}
