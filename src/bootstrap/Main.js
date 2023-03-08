@@ -70,21 +70,6 @@ class LeftLayout extends React.Component {
     render() {
         return (
             <div></div>
-            // <MDBContainer header='Animated'>
-            //     <MDBCol md='4'>
-            //         <MDBTreeview header='Folders' className='w-20'>
-            //             <MDBTreeviewList icon='envelope-open' title='Mail' far open>
-            //                 <MDBTreeviewItem icon='address-open' title='Contact' far />
-            //                 <MDBTreeviewItem icon='bell' title='Offer' far />
-            //                 <MDBTreeviewList icon='calendar' title='Calendar' far open>
-            //                     <MDBTreeviewItem icon='clock' title='Deadlines' far />
-            //                     <MDBTreeviewItem icon='users' title='Meetings' opend />
-            //                 </MDBTreeviewList>
-            //             </MDBTreeviewList>
-            //         </MDBTreeview>
-            //     </MDBCol>
-            // </MDBContainer>
-
         )
     }
 }
