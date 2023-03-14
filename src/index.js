@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import Main from "./demo/Main";
 // import {default as Main} from "./transferComponent/Main";
-import Main from './bootstrap/Main';
+// import Main from './bootstrap/Main';
 // import Game from './tutorial/Game'
 // import reportWebVitals from './reportWebVitals';
 // import Test from "./testModule/Test";
