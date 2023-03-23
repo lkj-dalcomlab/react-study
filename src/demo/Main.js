@@ -1,21 +1,47 @@
-import {Container, Row} from "react-bootstrap";
-import HeaderFrame from "./Header";
 import 'bootstrap/dist/css/bootstrap.css'
-import Navigator from "./Navigator";
-import Body from "./Body";
+import {Drawer, IconButton, useTheme} from "@mui/material";
+import {useState} from "react";
+import {MenuFoldOutlined, MenuUnfoldOutlined} from "@ant-design/icons";
+
 export default function Main() {
+    const theme = useTheme();
+    const [open, setOpen] = useState(true);
+    const iconBackColor = 'grey.100';
+    const iconBackColorOpen = 'grey.200';
+
+    const onOpen = ()=> setOpen(!open);
+
     return (
         <div>
-            <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-              rel="stylesheet"/>
-
-            <Container style={{width:"100vw", maxWidth:"100vw"}}>
-                <Row style={{height:"100vh"}}>
-                    <Navigator/>
-                    <Body/>
-                    <Div>테스트</Div>
-                </Row>
-            </Container>
+            <IconButton
+                disableRipple
+                aria-label="open drawer"
+                onClick={onOpen}
+                edge="start"
+                color="primary"
+                sx={{ color: 'text.primary', bgcolor: open ? iconBackColorOpen : iconBackColor, ml: { xs: 0, lg: -2 } }}
+            >
+                {!open ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+            </IconButton>
+            <Drawer
+                // container={container}
+                variant="temporary"
+                open={open}
+                onClose={(e)=>{onOpen()}}
+                ModalProps={{ keepMounted: true }}
+                sx={{
+                    display: { xs: 'block', lg: 'none' },
+                    '& .MuiDrawer-paper': {
+                        boxSizing: 'border-box',
+                        width: 260,
+                        borderRight: `1px solid ${theme.palette.divider}`,
+                        backgroundImage: 'none',
+                        boxShadow: 'inherit'
+                    }
+                }}
+            >
+                <div>menu</div>
+            </Drawer>
         </div>
 
     )
