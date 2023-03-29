@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Main from "./demo/Main";
-// import {default as Main} from "./transferComponent/Main";
-// import Main from './bootstrap/Main';
+import App from "./demo";
+// import {default as Index} from "./transferComponent/Index";
+// import Index from './bootstrap/Index';
 // import Game from './tutorial/Game'
 // import reportWebVitals from './reportWebVitals';
 // import Test from "./testModule/Test";
@@ -10,7 +10,7 @@ import Main from "./demo/Main";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Main />
+    <App />
   </React.StrictMode>
 );
 

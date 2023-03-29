@@ -32,7 +32,7 @@ function Main() {
     )
 }
 
-// class Main extends React.Component {
+// class Index extends React.Component {
 //     render() {
 //         return (
 //             <Command/>
