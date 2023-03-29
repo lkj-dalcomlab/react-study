@@ -40,7 +40,6 @@ export default function MenuLayout({menuOpen, onOpen}) {
                 (<MiniDrawerStyled variant="permanent" open={menuOpen}>
                     {menuHeader}
                     {menuContents}
-                    {console.log('contain menu, ' + menuOpen)}
                 </MiniDrawerStyled>)
                 :
                 (<Drawer
