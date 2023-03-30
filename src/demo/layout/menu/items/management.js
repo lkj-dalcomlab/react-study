@@ -1,8 +1,9 @@
 const management = {
-    title: "management",
+    title: "Management",
     children: [
         {
-            title: "server",
+            id: "managedServer",
+            title: "Server",
             path: "/management/server"
         }
     ]

@@ -6,6 +6,7 @@ import {Box, Toolbar} from "@mui/material";
 import {Outlet} from "react-router-dom";
 
 export default function MainLayout() {
+    //TODO: console.log("MainLayout rendering");
     const {menuOpen} = useSelector(state => state.menuActor);
 
     const dispatch = useDispatch();

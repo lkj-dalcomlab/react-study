@@ -7,6 +7,7 @@ import {createTheme, ThemeProvider} from "@mui/material";
 import iconButton from "./theme/iconButton";
 
 export default function App() {
+    //TODO: console.log("App rendering");
     const theme = createTheme();
     theme.components = iconButton(theme);
 

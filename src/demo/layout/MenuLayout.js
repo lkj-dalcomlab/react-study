@@ -4,8 +4,10 @@ import MenuContents from "./menu/MenuContents";
 import {styled} from "@mui/material/styles";
 import {menuWidth} from "../config/config";
 import {useMemo} from "react";
+import {useSelector} from "react-redux";
 
 export default function MenuLayout({menuOpen, onOpen}) {
+    //TODO: console.log("menuLayout rendering");
     const openMenu = (theme)=> ({
         width: menuWidth
     });
@@ -16,7 +18,6 @@ export default function MenuLayout({menuOpen, onOpen}) {
         width: menuWidth,
         flexShrink: 0,
         whiteSpace: 'nowrap',
-        boxSizing: 'border-box',
         ...(open &&
             {
                 ...openMenu(theme),
@@ -32,7 +33,9 @@ export default function MenuLayout({menuOpen, onOpen}) {
     const theme = useTheme();
     const menuCutLine = useMediaQuery(theme.breakpoints.up('lg'));
 
-    const menuHeader = useMemo(()=> (<MenuHeader/>), []);
+
+    // const menuDraw = useMemo(()=> (menuOpen), [menuOpen]);
+    const menuHeader = useMemo(()=> (<MenuHeader menuOpen={menuOpen}/>), [menuOpen]);
     const menuContents = useMemo(()=> (<MenuContents/>), []);
     return (
         <>

@@ -1,8 +1,9 @@
 const status = {
-    title: "status",
+    title: "Status",
     children: [
         {
-            title: "chart",
+            id: "statesChart",
+            title: "Chart",
             path: "/status/chart"
         }
     ]
