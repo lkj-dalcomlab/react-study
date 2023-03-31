@@ -1,4 +1,3 @@
-import {NavLink} from "react-router-dom";
 import NavItem from "./NavItem";
 import {Box, List, Typography} from "@mui/material";
 import {useSelector} from "react-redux";
@@ -24,7 +23,7 @@ export default function NavGroup({groupItem}) {
                     </Box>
                 )
             }
-            sx={{ mb: menuOpen ? 1.5 : 0, py: 0, zIndex: 0 }}
+            sx={{ mb: 1.5, py: 0, zIndex: 0 }}
         >
             {items}
         </List>
