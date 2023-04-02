@@ -8,8 +8,8 @@ const menuActor = createSlice({
     name: "menuActor",
     initialState,
     reducers: {
-        menuSwitch: (state) => {
-            state.menuOpen = !state.menuOpen;
+        menuSwitch: (state, action) => {
+            state.menuOpen = !action.payload.menuOpen;
         },
         selectMenuItem: (state, action) => {
             state.selectMenuId = action.payload.selectMenuId;
