@@ -4,9 +4,11 @@ import ProcessTable from "./ProcessTable";
 import {useDispatch, useSelector} from "react-redux";
 import {selectProcessId, updateCategories, updateProcessList} from "../../reducer/processData";
 import ProcessStatus from "./ProcessStatus";
+import React from "react";
+import GridTable from "../gridjs/GridTable";
 
 export default function DashboardLayout() {
-    const {pidData} = useSelector(state => state.processData);
+    // const {categories, processList} = useSelector(state => state.processData);
 
     const dispatch = useDispatch();
     const loadProcessList = () => {
@@ -35,7 +37,8 @@ export default function DashboardLayout() {
                     <ProcessStatus/>
                 </Box>
                 <Card>
-                    <ProcessTable/>
+                    <GridTable/>
+                    {/*<ProcessTable/>*/}
                 </Card>
             </Grid>
         </div>
