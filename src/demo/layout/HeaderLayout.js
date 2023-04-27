@@ -1,7 +1,9 @@
 import {MenuFoldOutlined, MenuUnfoldOutlined} from "@ant-design/icons";
-import {AppBar, IconButton, Toolbar, useMediaQuery, useTheme} from "@mui/material";
+import {AppBar, Grid, IconButton, Toolbar, useMediaQuery, useTheme} from "@mui/material";
 import {styled} from "@mui/material/styles";
 import {menuWidth} from "../config/config";
+import SelectLayout from "./combobox/SelectLayout";
+import {useCallback, useEffect, useMemo} from "react";
 
 export default function HeaderLayout({menuOpen, onOpen}) {
     const theme = useTheme();
@@ -17,18 +19,21 @@ export default function HeaderLayout({menuOpen, onOpen}) {
             marginLeft: menuWidth,
             width: `calc(100% - ${menuWidth}px)`
         })
-    }))
+    }));
 
     const header = (
         <Toolbar>
-            <IconButton color="default" aria-label="open drawer" edge="start"
-                        sx={{
-                            color: 'text.primary',
-                            bgcolor: 'grey.200'
-                        }}
-                        onClick={onOpen}>
-                {!menuOpen ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            </IconButton>
+            <Grid container justifyContent="space-between" alignItems="center" margin="10px 0">
+                <IconButton color="default" aria-label="open drawer" edge="start"
+                            sx={{
+                                color: 'text.primary',
+                                bgcolor: 'grey.200'
+                            }}
+                            onClick={onOpen}>
+                    {!menuOpen ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                </IconButton>
+                <SelectLayout/>
+            </Grid>
         </Toolbar>
     );
     const menuCutLine = useMediaQuery(theme.breakpoints.up('lg'));

@@ -1,4 +1,4 @@
-import {Card} from "@mui/material";
+import {Card, Grid} from "@mui/material";
 import {useSelector} from "react-redux";
 import ProcessGraph from "./ProcessGraph";
 
@@ -17,16 +17,20 @@ export default function ProcessStatus() {
 
     return (
         <>
+            <Grid container spacing={1}>
             {
                 (selectedPIDs.length > 0) &&
                 selectedPIDs.map(pid=> {
                     return (
+                        <Grid item xs={6}>
                             <Card sx={boxStyle}>
                                 <ProcessGraph pid={pid}/>
                             </Card>
+                        </Grid>
                     )
                 })
             }
+            </Grid>
         </>
     )
 }

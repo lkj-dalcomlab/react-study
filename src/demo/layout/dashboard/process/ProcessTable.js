@@ -1,7 +1,7 @@
 import {Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
 import React from "react";
-import {selectProcessId} from "../../reducer/processData";
+import {selectProcessId} from "../../../reducer/processData";
 
 export default function ProcessTable() {
     console.log("ProcessTable render");

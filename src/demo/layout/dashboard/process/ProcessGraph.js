@@ -40,7 +40,7 @@ export default function ProcessGraph({pid}) {
             curve: 'smooth'
         },
         title: {
-            text: 'PID[' + pid + '] status',
+            text: 'PID[' + pid + '] examples',
             align: 'left'
         },
         markers: {

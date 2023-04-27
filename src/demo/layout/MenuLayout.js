@@ -14,7 +14,7 @@ export default function MenuLayout({menuOpen, onOpen}) {
 
 
     // const menuDraw = useMemo(()=> (menuOpen), [menuOpen]);
-    const menuHeader = useMemo(()=> (<MenuHeader menuOpen={menuOpen}/>), [menuOpen]);
+    const menuHeader = useMemo(()=> (<MenuHeader/>), []);
     const menuContents = useMemo(()=> (<MenuContents/>), []);
 
     return (

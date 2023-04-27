@@ -2,7 +2,7 @@ import Grid from "./GridWrapper";
 import React, {useEffect} from "react";
 import "gridjs/dist/theme/mermaid.css";
 import {useDispatch, useSelector} from "react-redux";
-import {selectProcessId} from "../../reducer/processData";
+import {selectProcessId} from "../../../../../reducer/processData";
 // import {Grid} from "gridjs-react";
 // import { Grid as Gridjs } from "gridjs";
 
@@ -10,7 +10,7 @@ import {selectProcessId} from "../../reducer/processData";
 export default function GridTable() {
     const selecte = (cell, row, col) => {
         if (row?._cells[3].data === 'select') {
-            row.element.style.backgroundColor = 'blue';
+            // row.element.style.backgroundColor = 'blue';
             return {'style': 'color: blue'}
         }
     }
@@ -22,7 +22,7 @@ export default function GridTable() {
         {name:'active', hidden: true, attributes: selecte}
     ];
     const data = [];
-    const {categories, processList, selectedPIDs} = useSelector(state => state.processData);
+    const {processList, selectedPIDs} = useSelector(state => state.processData);
     useEffect(()=> {
         console.log("[render] GridTable");
 

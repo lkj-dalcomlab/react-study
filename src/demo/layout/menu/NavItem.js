@@ -14,14 +14,14 @@ export default function NavItem({item}) {
         dispatch(selectMenuItem({selectMenuId: menuId}));
     }
 
-    let listItemProps = { component: forwardRef((props, ref) => <Link ref={ref} {...props} to={item.path} />) };
+    // let listItemProps = { component: forwardRef((props, ref) => <Link ref={ref} {...props} to={item.path} />) };
 
     const Icon = item.icon;
 
     const textColor = 'text.primary';
     const iconSelectedColor = 'primary.main';
     return (
-        <ListItemButton {...listItemProps}
+        <ListItemButton /*{...listItemProps}*/ component={Link} to={item.path}
                         onClick ={() => menuHandler(item.id)}
                         selected={isSelected}
                         sx={{

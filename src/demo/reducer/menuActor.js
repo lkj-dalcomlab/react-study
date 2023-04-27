@@ -1,8 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+export const MENU = {
+    HOME: 'Home',
+    MANAGED_SERVER: 'ManagedServer',
+    CHART_EXAMPLE: 'ChartExample',
+    GRID_EXAMPLE: 'GridExample'
+}
+
 const initialState = {
     menuOpen: false,
-    selectMenuId: ''
+    selectMenuId: "home"
 }
 const menuActor = createSlice({
     name: "menuActor",
@@ -13,7 +20,10 @@ const menuActor = createSlice({
         },
         selectMenuItem: (state, action) => {
             state.selectMenuId = action.payload.selectMenuId;
-        }
+        },
+        // currentPath:() => {
+        //     return location.pathname;
+        // }
     }
 })
 

@@ -1,8 +1,8 @@
-import status from "./status";
+import examples from "./examples";
 import management from "./management";
 
 const menuItems = [
-    management, status
+    management, examples,
 ]
 
 export default menuItems;

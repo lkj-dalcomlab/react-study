@@ -4,7 +4,6 @@ const initialState = {
     categories: [],
     processList: [],
     selectedPIDs: [],
-    pidData: []
 }
 
 const processData = createSlice({
@@ -17,12 +16,6 @@ const processData = createSlice({
         updateProcessList: (state, action) => {
             return {...state, processList: [...action.payload]}
         },
-        updatePidData: (state, action) => {
-            return {...state, pidData: [...action.payload]}
-        },
-        clearPidData: (state) => {
-            state.pidData = [];
-        },
         selectProcessId: (state, action) => {
             const pids = [...state.selectedPIDs];
             const find = pids.findIndex(e => e === action.payload);
@@ -32,10 +25,12 @@ const processData = createSlice({
             }
             return {...state, selectedPIDs: [...state.selectedPIDs, action.payload]}
         },
-
+        selectProcessIds: (state, action) => {
+            return {...state, selectedPIDs: [...action.payload]}
+        }
     }
 });
 
 export default processData.reducer;
 
-export const {updateCategories, updateProcessList, selectProcessId, updatePidData, clearPidData} = processData.actions;
+export const {updateCategories, updateProcessList, selectProcessId, selectProcessIds} = processData.actions;
