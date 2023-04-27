@@ -9,7 +9,7 @@ export const MENU = {
 
 const initialState = {
     menuOpen: false,
-    selectMenuId: "home"
+    selectMenuId: MENU.HOME
 }
 const menuActor = createSlice({
     name: "menuActor",
