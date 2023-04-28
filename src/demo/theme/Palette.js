@@ -8,6 +8,7 @@ const Palette = () => {
         palette: {
             ...paletteColors,
             text: {
+                //TODO: 추가 색상이 적용되질 않음.
                 primary: paletteColors.grey[700],
                 secondary: paletteColors.grey[500],
                 disabled: paletteColors.grey[400]

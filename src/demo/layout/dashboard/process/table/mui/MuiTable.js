@@ -109,13 +109,14 @@ export default function MuiTable() {
                 }}
                 rows={rows}
                 columns={columns}
-                // initialState={{
-                //     pagination: {
-                //         paginationModel: {
-                //             pageSize: 10,
-                //         },
-                //     },
-                // }}
+                initialState={{
+                    pagination: {
+                        shape: "rounded"
+                        // paginationModel: {
+                        //     pageSize: 10,
+                        // },
+                    },
+                }}
                 // pageSizeOptions={[10]}
                 pageSize={10}
                 rowsPerPageOptions={[10, 30]}

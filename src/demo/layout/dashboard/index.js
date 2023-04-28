@@ -3,6 +3,8 @@ import {LAYOUT} from "../../reducer/dashboardSwitch";
 import ProcessLayout from "./process";
 import PopupProcessSearch from "./process/PopupProcessSearch";
 import {MENU, selectMenuItem} from "../../reducer/menuActor";
+import TabLayout from "./TabLayout";
+import AccordianLayout from "./AccordianLayout";
 
 export default function DashboardLayout() {
     const {layoutState} = useSelector(state => state.dashboardSwitch);
@@ -21,6 +23,12 @@ export default function DashboardLayout() {
             }
             {layoutState === LAYOUT.POPUP &&
                 <PopupProcessSearch/>
+            }
+            {layoutState === LAYOUT.TAB &&
+                <TabLayout/>
+            }
+            {layoutState === LAYOUT.ACCORDIAN &&
+                <AccordianLayout/>
             }
         </>
     )
