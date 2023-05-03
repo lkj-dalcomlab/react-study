@@ -3,7 +3,7 @@ import {BrowserRouter} from 'react-router-dom'
 import {Provider} from "react-redux"
 import store from "./reducer/store";
 import MainRouter from "./route";
-import {createTheme, ThemeProvider} from "@mui/material";
+import {createTheme, ThemeProvider} from "@mui/material/styles";
 import iconButton from "./theme/component/iconButton";
 import typography from "./theme/component/typography"
 import Typography from "./theme/Typography"

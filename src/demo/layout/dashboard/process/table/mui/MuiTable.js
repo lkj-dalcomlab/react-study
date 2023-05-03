@@ -1,66 +1,66 @@
 import * as React from 'react';
+import {useState} from 'react';
 import Box from '@mui/material/Box';
-import { DataGrid } from '@mui/x-data-grid';
+import {
+    DataGrid,
+    gridPageCountSelector,
+    gridPageSelector,
+    GridToolbarColumnsButton,
+    GridToolbarContainer,
+    GridToolbarDensitySelector,
+    GridToolbarFilterButton,
+    koKR,
+    useGridApiContext,
+    useGridSelector
+} from '@mui/x-data-grid';
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
 import {selectProcessIds} from "../../../../../reducer/processData";
+import {Pagination} from "@mui/material";
+import CustomNoRowsOverlay from "./CustomNoRowsOverlay";
 
-// const columns = [
-//     { field: 'pid', headerName: 'pid', width: 90 },
-//     {
-//         field: 'cpuUsage',
-//         headerName: 'cpu 사용률',
-//         width: 150,
-//         editable: false,
-//     },
-//     {
-//         field: 'memUsage',
-//         headerName: '메모리 사용률',
-//         width: 150,
-//         editable: false,
-//     },
-//     {
-//         field: 'age',
-//         headerName: 'Age',
-//         type: 'number',
-//         width: 110,
-//         editable: false,
-//     },
-//     {
-//         field: 'fullName',
-//         headerName: 'Full name',
-//         description: 'This column has a value getter and is not sortable.',
-//         sortable: false,
-//         width: 160,
-//         valueGetter: (params) =>
-//             `${params.row.memUsage || ''} ${params.row.cpuUsage || ''}`,
-//     },
-// ];
 
-// const rows = [
-//     { id: 1, cpuUsage: 'Snow', memUsage: 'Jon', age: 35 },
-//     { id: 2, cpuUsage: 'Lannister', memUsage: 'Cersei', age: 42 },
-//     { id: 3, cpuUsage: 'Lannister', memUsage: 'Jaime', age: 45 },
-//     { id: 4, cpuUsage: 'Stark', memUsage: 'Arya', age: 16 },
-//     { id: 5, cpuUsage: 'Targaryen', memUsage: 'Daenerys', age: null },
-//     { id: 6, cpuUsage: 'Melisandre', memUsage: null, age: 150 },
-//     { id: 7, cpuUsage: 'Clifford', memUsage: 'Ferrara', age: 44 },
-//     { id: 8, cpuUsage: 'Frances', memUsage: 'Rossini', age: 36 },
-//     { id: 9, cpuUsage: 'Roxie', memUsage: 'Harvey', age: 65 },
-// ];
+function CustomToolbar() {
+    return (
+        <GridToolbarContainer>
+            <GridToolbarColumnsButton/>
+            <GridToolbarFilterButton/>
+            <GridToolbarDensitySelector/>
+            {/*<GridToolbarExport/>*/}
+        </GridToolbarContainer>
+    )
+}
+
+function CustomPagination() {
+    const apiRef = useGridApiContext();
+    const page = useGridSelector(apiRef, gridPageSelector);
+    const pageCount = useGridSelector(apiRef, gridPageCountSelector);
+
+    return (
+        <Pagination
+            count={pageCount}
+            shape="rounded"
+            variant="outlined"
+            color="primary"
+            showFirstButton
+            showLastButton
+            page={page + 1}
+            onChange={(event, value) => apiRef.current.setPage(value - 1)}
+        />
+    )
+}
 
 export default function MuiTable() {
     const columns = [
-        { field: 'id', headerName: 'pid', width: 90 },
+        { field: 'id', headerName: 'PID', width: 90 },
         {
             field: 'cpuUsage',
-            headerName: 'cpu 사용률',
+            headerName: 'CPU 사용률',
             width: 150,
             editable: false,
         },
         {
             field: 'memUsage',
-            headerName: '메모리 사용률',
+            headerName: 'Memory 사용률',
             width: 150,
             editable: false,
         }
@@ -73,30 +73,19 @@ export default function MuiTable() {
         rows.push({id: process.pid, cpuUsage: process.cpuUsage, memUsage: process.memoryUsage, confirmed: true});
     });
 
-    const [selectionModel, setSelectionModel] = useState([]);
-
-    useEffect(() => {
-        setSelectionModel(selectedPIDs);
-    }, [])
     const handleSelectionModelChange = (newSelection) => {
         dispatch(selectProcessIds(newSelection));
-        setSelectionModel(newSelection);
         console.log("---selectionModelChange");
         console.log(newSelection);
         console.log("selectionModelChange---");
 
     }
-    const onClick = (params) => {
-        console.log("---onClick");
-        console.log(params);
-        console.log("onClick---");
-    };
 
-    const onRowSelection = (r, s) => {
-        console.log("rowSelect");
-        // console.log(r);
-        // console.log(s);
-    }
+    const [paginationModel, setPaginationModel] = useState({
+        pageSize: 5,
+        page: 0,
+    })
+
     return (
         <Box sx={{ height: 400, width: '100%' }}>
             <DataGrid
@@ -109,25 +98,33 @@ export default function MuiTable() {
                 }}
                 rows={rows}
                 columns={columns}
-                initialState={{
-                    pagination: {
-                        shape: "rounded"
-                        // paginationModel: {
-                        //     pageSize: 10,
-                        // },
-                    },
-                }}
-                // pageSizeOptions={[10]}
-                pageSize={10}
-                rowsPerPageOptions={[10, 30]}
+
                 checkboxSelection
+
                 // disableRowSelectionOnClick
                 // onRowClick={onClick}
                 // keepNonExistentRowsSelected
                 // onRowSelectionModelChange = {onRowSelection}
 
-                rowSelectionModel={selectionModel}
                 onRowSelectionModelChange={handleSelectionModelChange}
+                // slotProps={{
+                //     pagination: {
+                //         // count: 10,
+                //         shape: "rounded",
+                //         variant: "outlined"
+                //     }
+                // }}
+
+                paginationModel={paginationModel}
+                onPaginationModelChange={setPaginationModel}
+
+                slots={{
+                    pagination: CustomPagination,
+                    toolbar: CustomToolbar,
+                    noRowsOverlay: CustomNoRowsOverlay
+                }}
+
+                localeText={koKR.components.MuiDataGrid.defaultProps.localeText}
             />
         </Box>
     );
