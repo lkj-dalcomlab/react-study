@@ -9,10 +9,9 @@ import AccordianLayout from "./AccordianLayout";
 export default function DashboardLayout() {
     const {layoutState} = useSelector(state => state.dashboardSwitch);
     const {selectMenuId} = useSelector(state => state.menuActor);
-    console.log("dashboard layout render: " + selectMenuId);
 
     const dispatch = useDispatch();
-    if (selectMenuId ==! MENU.HOME) {
+    if (selectMenuId !== MENU.HOME) {
         dispatch(selectMenuItem({selectMenuId: MENU.HOME}));
     }
 

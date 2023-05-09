@@ -24,12 +24,11 @@ export default function HeaderLayout({menuOpen, onOpen}) {
     const header = (
         <Toolbar>
             <Grid container justifyContent="space-between" alignItems="center" margin="10px 0">
-                <IconButton color="default" aria-label="open drawer" edge="start"
+                <IconButton aria-label="open drawer" edge="start" onClick={onOpen}
                             sx={{
-                                color: 'text.primary',
-                                bgcolor: 'grey.200'
+                                border: `1px solid ${theme.palette.secondary.main}`
                             }}
-                            onClick={onOpen}>
+                >
                     {!menuOpen ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                 </IconButton>
                 <SelectLayout/>

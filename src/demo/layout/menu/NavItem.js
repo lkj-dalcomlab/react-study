@@ -20,6 +20,7 @@ export default function NavItem({item}) {
 
     const textColor = 'text.primary';
     const iconSelectedColor = 'primary.main';
+    const hoverColor = 'secondary.dark';
     return (
         <ListItemButton /*{...listItemProps}*/ component={Link} to={item.path}
                         onClick ={() => menuHandler(item.id)}
@@ -30,52 +31,26 @@ export default function NavItem({item}) {
                             py: 1.25,
                             ...(menuOpen && {
                                 '&:hover': {
-                                    bgcolor: 'primary.lighter'
+                                    bgcolor: 'primary.lighter',
+                                    '& .itemText, .itemIcon': {
+                                        color: iconSelectedColor
+                                    }
                                 },
                                 '&.Mui-selected': {
                                     bgcolor: 'primary.lighter',
                                     borderRight: `2px solid ${theme.palette.primary.main}`,
                                     color: iconSelectedColor,
                                     '&:hover': {
-                                        color: iconSelectedColor,
                                         bgcolor: 'primary.lighter'
                                     }
-                                }
-                            }),
-                            ...(!menuOpen && {
-                                '&:hover': {
-                                    bgcolor: 'transparent'
-                                },
-                                '&.Mui-selected': {
-                                    '&:hover': {
-                                        bgcolor: 'transparent'
-                                    },
-                                    bgcolor: 'transparent'
                                 }
                             })
                         }}>
             {menuOpen &&
-                <ListItemIcon
+                <ListItemIcon className="itemIcon"
                     sx={{
                         minWidth: 28,
-                        color: isSelected ? iconSelectedColor : textColor,
-                        ...(!menuOpen && {
-                            borderRadius: 1.5,
-                            width: 36,
-                            height: 36,
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            '&:hover': {
-                                bgcolor: 'secondary.lighter'
-                            }
-                        }),
-                        ...(!menuOpen &&
-                            isSelected && {
-                                bgcolor: 'primary.lighter',
-                                '&:hover': {
-                                    bgcolor: 'primary.lighter'
-                                }
-                            })
+                        color: isSelected ? iconSelectedColor : textColor
                     }}>
                     <Icon style={{ fontSize: '1rem' }} />
                 </ListItemIcon>
@@ -83,7 +58,11 @@ export default function NavItem({item}) {
             {menuOpen &&
                 <ListItemText
                     primary={
-                        <Typography variant="h6" sx={{ color: isSelected ? iconSelectedColor : textColor }}>
+                        <Typography variant="h6" className="itemText"
+                                    sx={{
+                                        color: isSelected ? iconSelectedColor : textColor
+                                    }}
+                        >
                             {item.title}
                         </Typography>
                     }

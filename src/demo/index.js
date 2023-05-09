@@ -9,6 +9,7 @@ import typography from "./theme/component/typography"
 import Typography from "./theme/Typography"
 import {merge} from "lodash";
 import Palette from "./theme/Palette";
+import {CssBaseline} from "@mui/material";
 
 export default function App() {
     //TODO: console.log("App rendering");
@@ -20,6 +21,7 @@ export default function App() {
         <Provider store={store}>
             <BrowserRouter basename="/">
                 <ThemeProvider theme={theme}>
+                    <CssBaseline/>
                     <MainRouter/>
                 </ThemeProvider>
             </BrowserRouter>

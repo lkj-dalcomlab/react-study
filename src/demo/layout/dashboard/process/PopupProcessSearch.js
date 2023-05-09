@@ -1,4 +1,4 @@
-import {Button, Card, Dialog, DialogContent, DialogTitle, Grid, IconButton} from "@mui/material";
+import {Button, Card, Dialog, DialogContent, DialogTitle, Grid, IconButton, useTheme} from "@mui/material";
 import React, {useState} from "react";
 import {RetweetOutlined} from "@ant-design/icons";
 import {useDispatch} from "react-redux";
@@ -16,6 +16,7 @@ export default function PopupProcessSearch() {
         setOpen(false);
     };
 
+    const theme = useTheme();
     const dispatch = useDispatch();
 
     const loadProcessList = () => {
@@ -31,7 +32,9 @@ export default function PopupProcessSearch() {
 
     const SearchLayout = () => {
         return (
-            <IconButton sx={{color: 'text.primary', bgcolor: 'grey.200'}}
+            <IconButton sx={{
+                            border: `1px solid ${theme.palette.secondary.main}`
+                        }}
                         onClick={loadProcessList}
             >
                 <RetweetOutlined/>

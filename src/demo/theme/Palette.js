@@ -9,10 +9,11 @@ const Palette = () => {
             ...paletteColors,
             text: {
                 //TODO: 추가 색상이 적용되질 않음.
-                primary: paletteColors.grey[700],
-                secondary: paletteColors.grey[500],
+                primary: paletteColors.grey[0],
+                secondary: paletteColors.grey[300],
                 disabled: paletteColors.grey[400]
-            }
+            },
+            mode: 'dark'
         }
     });
 }

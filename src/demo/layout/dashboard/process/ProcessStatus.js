@@ -12,7 +12,8 @@ export default function ProcessStatus() {
         textShadow: '0 1px 1px 1px #666',
         boxShadow: '0px 1px 15px 1px rgba(69, 65, 78, 0.08)',
         padding: '5px 10px 5px 0px',
-        margin: '0px 10px 10px 0px'
+        margin: '0px 10px 10px 0px',
+        height: '250px'
     };
 
     return (

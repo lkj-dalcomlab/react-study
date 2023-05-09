@@ -4,16 +4,12 @@ import {useEffect} from "react";
 
 export default function Server() {
     const {selectMenuId} = useSelector(state => state.menuActor);
-    console.log("server page render: " + selectMenuId);
-
-    // const dispatch = useDispatch();
-    // useEffect(()=> {
-    //     console.log("server page use effect: " + MENU.HOME);
-    //     if (selectMenuId !== MENU.HOME) {
-    //         console.log("server page id change");
-    //         dispatch(selectMenuItem({selectMenuId: ''}));
-    //     }
-    // });
+    const dispatch = useDispatch();
+    useEffect(()=> {
+        if (selectMenuId !== MENU.MANAGED_SERVER) {
+            dispatch(selectMenuItem({selectMenuId: MENU.MANAGED_SERVER}));
+        }
+    });
 
     return (
         <>

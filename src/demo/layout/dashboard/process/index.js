@@ -1,5 +1,5 @@
 import {RetweetOutlined} from "@ant-design/icons";
-import {Card, Grid, IconButton} from "@mui/material";
+import {Card, Grid, IconButton, useTheme} from "@mui/material";
 import ProcessStatus from "./ProcessStatus";
 import React from "react";
 import MuiTable from "./table/mui/MuiTable";
@@ -7,6 +7,7 @@ import {useDispatch} from "react-redux";
 import {updateCategories, updateProcessList} from "../../../reducer/processData";
 
 export default function ProcessLayout() {
+    const theme = useTheme();
     const dispatch = useDispatch();
 
     const loadProcessList = () => {
@@ -23,7 +24,9 @@ export default function ProcessLayout() {
     return (
         <Grid container spacing={1} direction="column">
             <Grid item xs={12} p={2}>
-                <IconButton sx={{color: 'text.primary', bgcolor: 'grey.200'}}
+                <IconButton sx={{
+                                border: `1px solid ${theme.palette.secondary.main}`
+                            }}
                             onClick={loadProcessList}
                 >
                     <RetweetOutlined/>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import {
     DataGrid,
@@ -73,16 +73,22 @@ export default function MuiTable() {
         rows.push({id: process.pid, cpuUsage: process.cpuUsage, memUsage: process.memoryUsage, confirmed: true});
     });
 
+    const [rowSelectionModel, setRowSelectionModel] = useState([]);
+
+    useEffect(() => {
+        setRowSelectionModel(selectedPIDs);
+    }, []);
+
     const handleSelectionModelChange = (newSelection) => {
         dispatch(selectProcessIds(newSelection));
+        setRowSelectionModel(newSelection);
         console.log("---selectionModelChange");
         console.log(newSelection);
         console.log("selectionModelChange---");
-
     }
 
     const [paginationModel, setPaginationModel] = useState({
-        pageSize: 5,
+        pageSize: 25,
         page: 0,
     })
 
@@ -103,17 +109,14 @@ export default function MuiTable() {
 
                 // disableRowSelectionOnClick
                 // onRowClick={onClick}
-                // keepNonExistentRowsSelected
-                // onRowSelectionModelChange = {onRowSelection}
+                // keepNonExistentRowsSelected={true}
 
                 onRowSelectionModelChange={handleSelectionModelChange}
-                // slotProps={{
-                //     pagination: {
-                //         // count: 10,
-                //         shape: "rounded",
-                //         variant: "outlined"
-                //     }
-                // }}
+                rowSelectionModel={rowSelectionModel}
+
+                onRowSelected={(GridRowSelectedParams) => {
+                    console.log(GridRowSelectedParams);
+                }}
 
                 paginationModel={paginationModel}
                 onPaginationModelChange={setPaginationModel}
