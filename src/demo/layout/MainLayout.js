@@ -29,7 +29,7 @@ export default function MainLayout() {
         <Box sx={{ display: "flex", width: "100%"} }>
             <HeaderLayout menuOpen={open} onOpen={onOpen}/>
             <MenuLayout menuOpen={open} onOpen={onOpen}/>
-            <Box component="main" sx={{ width: "100%", flexGrow: 1, p: { xs: 2, sm: 3} }}>
+            <Box component="main" sx={{ width: "100%", pt: { xs: 7}, pl: { xs: 3 }}}>
                 <Toolbar/>
                 <Outlet/>
             </Box>

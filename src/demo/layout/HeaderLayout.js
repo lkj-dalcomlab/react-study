@@ -37,7 +37,9 @@ export default function HeaderLayout({menuOpen, onOpen}) {
 
     const header = (
         <Toolbar>
-            <Grid container justifyContent="space-between" alignItems="center" margin="10px 0">
+            <Grid container sx={{
+                justifyContent:"space-between", alignItems:"center", margin:"10px 0", height:"60px", pl:"10px"
+            }}>
                 <IconButton aria-label="open drawer" edge="start" onClick={onOpen}
                             sx={{ marginRight: "20px",
                                 border: `1px solid ${theme.palette.secondary.main}`
