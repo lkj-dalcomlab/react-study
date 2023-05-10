@@ -1,19 +1,22 @@
 import { presetPalettes } from '@ant-design/colors';
 import {createTheme} from "@mui/material";
 
-const Palette = () => {
+const Palette = ({mode}) => {
     const paletteColors = PaletteColors();
 
     return createTheme({
         palette: {
             ...paletteColors,
             text: {
-                //TODO: 추가 색상이 적용되질 않음.
-                primary: paletteColors.grey[0],
-                secondary: paletteColors.grey[300],
+                primary: mode === 'dark' ? paletteColors.grey[0] : paletteColors.grey[700],
+                secondary: mode === 'dark' ? paletteColors.grey[300] : paletteColors.grey[500],
                 disabled: paletteColors.grey[400]
             },
-            mode: 'dark'
+            background: {
+                // paper: mode === 'dark' ? paletteColors.grey[0] : paletteColors.grey[700],
+                default: mode === 'dark' ? paletteColors.grey[800] : paletteColors.grey.A50
+            },
+            mode: mode
         }
     });
 }

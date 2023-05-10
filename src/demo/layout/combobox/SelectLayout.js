@@ -28,7 +28,7 @@ export default function SelectLayout() {
     return (
         <>
             {isSelectView &&
-                <FormControl sx={{minWidth: 120}}>
+                <FormControl sx={{minWidth: "120px", marginLeft: "10px"}}>
                     <InputLabel>Add</InputLabel>
                     <Select
                         open={open}

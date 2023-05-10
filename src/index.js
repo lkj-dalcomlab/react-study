@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from "./demo";
+import store from "./demo/reducer/store";
+import {Provider} from "react-redux";
 // import {default as Index} from "./transferComponent/Index";
 // import Index from './bootstrap/Index';
 // import Game from './tutorial/Game'
@@ -10,7 +12,9 @@ import App from "./demo";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-    <App />
+    <Provider store={store}>
+        <App />
+    </Provider>
   // </React.StrictMode>
 );
 

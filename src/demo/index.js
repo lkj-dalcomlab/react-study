@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import {BrowserRouter} from 'react-router-dom'
-import {Provider} from "react-redux"
+import {Provider, useSelector} from "react-redux"
 import store from "./reducer/store";
 import MainRouter from "./route";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
@@ -13,19 +13,17 @@ import {CssBaseline} from "@mui/material";
 
 export default function App() {
     //TODO: console.log("App rendering");
-    const paletteTheme = Palette();
+    const {mode} = useSelector(state => state.themeMode);
+    const paletteTheme = Palette({mode: mode});
     const theme = createTheme({typography: Typography, palette: paletteTheme.palette });
     theme.components = merge(iconButton(theme), typography());
 
     return (
-        <Provider store={store}>
-            <BrowserRouter basename="/">
-                <ThemeProvider theme={theme}>
-                    <CssBaseline/>
-                    <MainRouter/>
-                </ThemeProvider>
-            </BrowserRouter>
-        </Provider>
-
+        <BrowserRouter basename="/">
+            <ThemeProvider theme={theme}>
+                <CssBaseline/>
+                <MainRouter/>
+            </ThemeProvider>
+        </BrowserRouter>
     )
 }
