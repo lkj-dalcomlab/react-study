@@ -27,16 +27,17 @@ export default function BreadCrumb() {
         });
     });
 
+    const fontSize = "h5";
     return (
-        <Grid>
-            <Typography component={Link} to="/" color="textSecondary" variant="h6" sx={{ textDecoration: 'none' }}>
+        <Grid sx={{pb:'10px'}}>
+            <Typography component={Link} to="/" color="textSecondary" variant={fontSize} sx={{ textDecoration: 'none' }}>
                 Home
             </Typography>
             {
                 (item && selectMenuId !== MENU.HOME) && (
                     <>
-                        <span> / </span>
-                        <Typography component={Link} to={item.path} variant="h6" sx={{ textDecoration: 'none' }} color="textSecondary">
+                        <span variant={fontSize}> / </span>
+                        <Typography component={Link} to={item.path} variant={fontSize} sx={{ textDecoration: 'none' }} color="textSecondary">
                             {item.title}
                         </Typography>
                     </>

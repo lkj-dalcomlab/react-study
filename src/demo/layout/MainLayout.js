@@ -31,6 +31,7 @@ export default function MainLayout() {
             <MenuLayout menuOpen={open} onOpen={onOpen}/>
             <Box component="main" sx={{ width: "100%", pt: { xs: 7}, pl: { xs: 3 }}}>
                 <Toolbar/>
+                <BreadCrumb/>
                 <Outlet/>
             </Box>
         </Box>

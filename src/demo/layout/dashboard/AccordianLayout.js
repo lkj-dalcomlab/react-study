@@ -1,4 +1,4 @@
-import {Box, Card, createTheme, Grid, Paper, ThemeProvider} from "@mui/material";
+import {Box, Card, createTheme, Grid, Paper, ThemeProvider, useTheme} from "@mui/material";
 import {styled} from "@mui/material/styles";
 import {useState} from "react";
 import ProcessLayout from "./process";
@@ -13,8 +13,8 @@ const Item = styled(Paper)(({ theme }) => ({
     lineHeight: '60px',
 }));
 
-const lightTheme = createTheme({ palette: { mode: 'light' } });
 export default function AccordianLayout() {
+    const theme = useTheme();
     const [openDefault, setOpenDefault] = useState(false);
     const [openPopup, setOpenPopup] = useState(false);
 
@@ -30,9 +30,7 @@ export default function AccordianLayout() {
         <>
             <Grid container spacing={2}>
                 <Grid item xs={12}>
-                    <ThemeProvider theme={lightTheme}>
-                        <Item elevation={12} onClick={defaultClick}>Default</Item>
-                    </ThemeProvider>
+                    <Item elevation={24} onClick={defaultClick}>Default</Item>
                     {openDefault &&
                         <Box>
                             <ProcessLayout/>
@@ -40,9 +38,7 @@ export default function AccordianLayout() {
                     }
                 </Grid>
                 <Grid item xs={12}>
-                    <ThemeProvider theme={lightTheme}>
-                        <Item elevation={12} onClick={popupClick}>Popup</Item>
-                    </ThemeProvider>
+                    <Item elevation={24} onClick={popupClick}>Popup</Item>
                     {openPopup &&
                         <Box>
                             <PopupProcessSearch/>
