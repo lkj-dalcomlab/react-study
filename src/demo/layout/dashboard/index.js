@@ -4,7 +4,7 @@ import ProcessLayout from "./process";
 import PopupProcessSearch from "./process/PopupProcessSearch";
 import {MENU, selectMenuItem} from "../../reducer/menuActor";
 import TabLayout from "./TabLayout";
-import AccordianLayout from "./AccordianLayout";
+import AccordionLayout from "./AccordionLayout";
 
 export default function DashboardLayout() {
     const {layoutState} = useSelector(state => state.dashboardSwitch);
@@ -27,7 +27,7 @@ export default function DashboardLayout() {
                 <TabLayout/>
             }
             {layoutState === LAYOUT.ACCORDIAN &&
-                <AccordianLayout/>
+                <AccordionLayout/>
             }
         </>
     )
