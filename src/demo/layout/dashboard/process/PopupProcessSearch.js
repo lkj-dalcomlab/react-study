@@ -5,6 +5,7 @@ import {useDispatch} from "react-redux";
 import {updateCategories, updateProcessList} from "../../../reducer/processData";
 import ProcessStatus from "./ProcessStatus";
 import MuiTable from "./table/mui/MuiTable";
+import config from "../../../config/config";
 
 export default function PopupProcessSearch() {
     const [open, setOpen] = useState(false);
@@ -20,7 +21,7 @@ export default function PopupProcessSearch() {
     const dispatch = useDispatch();
 
     const loadProcessList = () => {
-        fetch("http://localhost:8088/process")
+        fetch(config.serverAddr)
             .then(res => res.json())
             .then(result => {
                 dispatch(updateCategories(result.categories));

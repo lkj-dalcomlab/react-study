@@ -1,6 +1,7 @@
 import Chart from "react-apexcharts";
 import React, {useEffect} from "react";
 import ReactApexChart from "apexcharts";
+import config from "../../../config/config";
 
 export default function ProcessGraph({pid}) {
     const chartId = 'realtime-' + pid;
@@ -66,7 +67,7 @@ export default function ProcessGraph({pid}) {
     };
 
     const fetchData = (curInterval) => {
-        fetch("http://localhost:8088/process?pid=" + pid)
+        fetch(config.serverAddr + "?pid=" + pid)
             .then(res => res.json())
             .then(res => {
                 const date = new Date();

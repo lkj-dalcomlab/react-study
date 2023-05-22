@@ -5,13 +5,14 @@ import React from "react";
 import MuiTable from "./table/mui/MuiTable";
 import {useDispatch} from "react-redux";
 import {updateCategories, updateProcessList} from "../../../reducer/processData";
+import config from "../../../config/config";
 
 export default function ProcessLayout() {
     const theme = useTheme();
     const dispatch = useDispatch();
 
     const loadProcessList = () => {
-        fetch("http://localhost:8088/process")
+        fetch(config.serverAddr)
             .then(res => res.json())
             .then(result => {
                 dispatch(updateCategories(result.categories));
