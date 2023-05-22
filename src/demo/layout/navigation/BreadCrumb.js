@@ -1,10 +1,20 @@
 import {Link, useLocation} from "react-router-dom";
-import {Grid, Typography} from "@mui/material";
+import {Box, Breadcrumbs, Grid, Typography} from "@mui/material";
 import menuItems from "../menu/items/menuItems";
 import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {MENU} from "../../reducer/menuActor";
+import HomeIcon from '@mui/icons-material/Home';
+import WhatshotIcon from '@mui/icons-material/Whatshot';
+import GrainIcon from '@mui/icons-material/Grain';
 
+function Icon({item, ...props}) {
+    console.log(props.sx);
+    const Icon = item.icon;
+    return (
+        <Icon sx={props.sx}/>
+    )
+}
 export default function BreadCrumb() {
     const [item, setItem] = useState();
     const location = useLocation();
@@ -14,7 +24,6 @@ export default function BreadCrumb() {
         group.map((item) => {
             if (item.type === 'item' && item.path === location.pathname) {
                 setItem(item);
-                console.log(item);
                 return false;
             }
             return true;
@@ -27,22 +36,27 @@ export default function BreadCrumb() {
         });
     });
 
+
+
     const fontSize = "h5";
     return (
-        <Grid sx={{pb:'10px'}}>
-            <Typography component={Link} to="/" color="textSecondary" variant={fontSize} sx={{ textDecoration: 'none' }}>
-                Home
-            </Typography>
+        <Breadcrumbs sx={{mb: "10px"}}>
+            <Link to="/" underline="hover"
+                  sx={{ display: 'flex', alignItems: 'center' }}
+                  color="inherit"
+            >
+                <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit"/>Home
+            </Link>
             {
                 (item && selectMenuId !== MENU.HOME) && (
-                    <>
-                        <span variant={fontSize}> / </span>
-                        <Typography component={Link} to={item.path} variant={fontSize} sx={{ textDecoration: 'none' }} color="textSecondary">
-                            {item.title}
-                        </Typography>
-                    </>
+                    <Typography
+                        sx={{ display: 'flex', alignItems: 'center' }}
+                        color="text.primary"
+                    >
+                        <Icon item={item}/> <Box component="span" sx={{ml: 0.5}}>{item.title}</Box>
+                    </Typography>
                 )
             }
-        </Grid>
+        </Breadcrumbs>
     )
 }
