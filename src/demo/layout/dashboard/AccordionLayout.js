@@ -1,11 +1,27 @@
-import {Accordion, AccordionDetails, AccordionSummary, Typography} from "@mui/material";
+import {Accordion, AccordionDetails, AccordionSummary, Box, Grid, Typography} from "@mui/material";
 import ProcessLayout from "./process";
 import PopupProcessSearch from "./process/PopupProcessSearch";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
+const xScroll = {
+    // display: 'flex',
+    // flexDirection: 'column',
+    overflowX: 'auto',
+}
+
+const accordionData = [
+    {
+        title: "Data Grid",
+        content: <ProcessLayout/>
+    },
+    {
+        title: "Data Grid & Popup",
+        content: <PopupProcessSearch/>
+    }
+]
 export default function AccordionLayout() {
     return (
-        <>
+        <Grid sx={{pr: "20px"}}>
             <Accordion>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon/>}
@@ -15,9 +31,9 @@ export default function AccordionLayout() {
                     <Typography>Data Grid</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <Typography>
+                    <Grid sx={{overflow: "scroll", pl: "10px", pr: "10px"}}>
                         <ProcessLayout/>
-                    </Typography>
+                    </Grid>
                 </AccordionDetails>
             </Accordion>
             <Accordion>
@@ -29,11 +45,9 @@ export default function AccordionLayout() {
                     <Typography>Data Grid & Popup</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <Typography>
-                        <PopupProcessSearch/>
-                    </Typography>
+                    <PopupProcessSearch/>
                 </AccordionDetails>
             </Accordion>
-        </>
+        </Grid>
     )
 }
