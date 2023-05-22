@@ -20,7 +20,7 @@ export default function NavItem({item}) {
 
     const textColor = 'text.primary';
     const iconSelectedColor = 'primary.main';
-    const hoverColor = 'secondary.dark';
+    const hoverColor = 'menuButton.primary';
     return (
         <ListItemButton /*{...listItemProps}*/ component={Link} to={item.path}
                         onClick ={() => menuHandler(item.id)}
@@ -31,17 +31,17 @@ export default function NavItem({item}) {
                             py: 1.25,
                             ...(menuOpen && {
                                 '&:hover': {
-                                    bgcolor: 'primary.lighter',
+                                    bgcolor: hoverColor,
                                     '& .itemText, .itemIcon': {
                                         color: iconSelectedColor
                                     }
                                 },
                                 '&.Mui-selected': {
-                                    bgcolor: 'primary.lighter',
+                                    bgcolor: hoverColor,
                                     borderRight: `2px solid ${theme.palette.primary.main}`,
                                     color: iconSelectedColor,
                                     '&:hover': {
-                                        bgcolor: 'primary.lighter'
+                                        bgcolor: hoverColor
                                     }
                                 }
                             })
