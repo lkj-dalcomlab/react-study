@@ -25,6 +25,12 @@ export default function GridLayout() {
                     <Box bgcolor="info.main">aa</Box>
                 </Grid>
             </Grid>
+
+            <div style={{width:"50px", backgroundColor: "blue"}}>
+                <p style={{wordBreak: "break-all"}}>
+                    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                </p>
+            </div>
         </>
     )
 }

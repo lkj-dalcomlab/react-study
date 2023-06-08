@@ -1,5 +1,5 @@
 import MainLayout from "../layout/MainLayout";
-import ServerLayout from "../layout/management/ServerLayout"
+import HostLayout from "../layout/management/HostLayout"
 import DashboardLayout from "../layout/dashboard";
 import ChartMain from "../layout/examples/chart";
 import GridLayout from "../layout/examples/grid";
@@ -14,8 +14,8 @@ const demoRouter = [
                 element: <DashboardLayout/>
             },
             {
-                path: "management/server",
-                element: <ServerLayout/>
+                path: "management/host/:name",
+                element: <HostLayout/>
             },
             {
                 path: "examples/chart",

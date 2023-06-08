@@ -8,16 +8,11 @@ import ProcessLayout from "./process";
 import PopupProcessSearch from "./process/PopupProcessSearch";
 
 export default function TabLayout() {
-    const theme = useTheme();
     const [value, setValue] = useState('0');
 
     const handleChange = (e, newValue) => {
         setValue(newValue);
     }
-
-    const handleChangeIndex = (index) => {
-        setValue(index);
-    };
 
     return (
         <Grid container>
@@ -45,15 +40,15 @@ export default function TabLayout() {
                         <Tab label="Item Seven" value="6"/>
                     </TabList>
 
-                        <TabPanel value = "0">
-                            <Box>
-                                <ProcessLayout/>
-                            </Box>
-                        </TabPanel>
-                        <TabPanel value = "1">
-                            <PopupProcessSearch/>
-                        </TabPanel>
-                        <TabPanel value = "2">Item Three</TabPanel>
+                    <TabPanel value = "0">
+                        <Box>
+                            <ProcessLayout/>
+                        </Box>
+                    </TabPanel>
+                    <TabPanel value = "1">
+                        <PopupProcessSearch/>
+                    </TabPanel>
+                    <TabPanel value = "2">Item Three</TabPanel>
                 </TabContext>
             </Grid>
         </Grid>

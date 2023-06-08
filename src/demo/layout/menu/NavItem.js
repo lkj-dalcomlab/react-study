@@ -1,5 +1,4 @@
 import {ListItemButton, ListItemIcon, ListItemText, Typography, useTheme} from "@mui/material";
-import {forwardRef} from "react";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {selectMenuItem} from "../../reducer/menuActor";
@@ -29,22 +28,20 @@ export default function NavItem({item}) {
                             zIndex: 1201,
                             pl: `28px`,
                             py: 1.25,
-                            ...(menuOpen && {
-                                '&:hover': {
-                                    bgcolor: hoverColor,
-                                    '& .itemText, .itemIcon': {
-                                        color: iconSelectedColor
-                                    }
-                                },
-                                '&.Mui-selected': {
-                                    bgcolor: hoverColor,
-                                    borderRight: `2px solid ${theme.palette.primary.main}`,
-                                    color: iconSelectedColor,
-                                    '&:hover': {
-                                        bgcolor: hoverColor
-                                    }
+                            '&:hover': {
+                                bgcolor: hoverColor,
+                                '& .itemText, .itemIcon': {
+                                    color: iconSelectedColor
                                 }
-                            })
+                            },
+                            '&.Mui-selected': {
+                                bgcolor: hoverColor,
+                                borderRight: `2px solid ${theme.palette.primary.main}`,
+                                color: iconSelectedColor,
+                                '&:hover': {
+                                    bgcolor: hoverColor
+                                }
+                            }
                         }}>
             {menuOpen &&
                 <ListItemIcon className="itemIcon"

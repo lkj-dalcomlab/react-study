@@ -1,11 +1,17 @@
 import NavItem from "./NavItem";
 import {Box, List, Typography} from "@mui/material";
 import {useSelector} from "react-redux";
+import NavHostGroup from "./NavHostGroup";
 
 export default function NavGroup({groupItem}) {
     const menuOpen = useSelector(state => state.menuActor.menuOpen);
 
     const items = groupItem.children.map((item)=> {
+        if (item.type === "nestedList") {
+            return (
+                <NavHostGroup item={item} key={item.id}/>
+            )
+        }
         return (
             <NavItem item={item} key={item.id}/>
         )

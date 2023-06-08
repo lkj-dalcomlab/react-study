@@ -19,6 +19,7 @@ import {Button, IconButton, Pagination} from "@mui/material";
 import CustomNoRowsOverlay from "./CustomNoRowsOverlay";
 import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 import {GridCellParams} from "@mui/x-data-grid";
+import CustomPagination from "./CustomPagination";
 
 
 function CustomToolbar() {
@@ -32,31 +33,13 @@ function CustomToolbar() {
     )
 }
 
-function CustomPagination() {
-    const apiRef = useGridApiContext();
-    const page = useGridSelector(apiRef, gridPageSelector);
-    const pageCount = useGridSelector(apiRef, gridPageCountSelector);
-
-    return (
-        <Pagination
-            count={pageCount}
-            shape="rounded"
-            variant="outlined"
-            color="primary"
-            showFirstButton
-            showLastButton
-            page={page + 1}
-            onChange={(event, value) => apiRef.current.setPage(value - 1)}
-        />
-    )
-}
-
 export default function MuiTable() {
     const dispatch = useDispatch();
     const {processList, selectedPIDs} = useSelector(state => state.processData);
     const rows = [];
 
     processList.map(process => {
+        //column의 필수로 들어가야 하는 field의 값이 id이기 때문에 서버에서 내려주는 pid값과 상이함
         const pid = process.pid === undefined ? process.id : process.pid;
         rows.push({id: pid, cpuUsage: process.cpuUsage, memoryUsage: process.memoryUsage});
     });
@@ -105,9 +88,6 @@ export default function MuiTable() {
     const handleSelectionModelChange = (newSelection) => {
         dispatch(selectProcessIds(newSelection));
         setRowSelectionModel(newSelection);
-        console.log("---selectionModelChange");
-        console.log(newSelection);
-        console.log("selectionModelChange---");
     }
 
     const [paginationModel, setPaginationModel] = useState({

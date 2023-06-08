@@ -67,7 +67,7 @@ export default function ProcessGraph({pid}) {
     };
 
     const fetchData = (curInterval) => {
-        fetch(config.serverAddr + "?pid=" + pid)
+        fetch(config.serverAddr + "/process/?pid=" + pid)
             .then(res => res.json())
             .then(res => {
                 const date = new Date();

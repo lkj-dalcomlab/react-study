@@ -36,11 +36,8 @@ export default function BreadCrumb() {
         });
     });
 
-
-
-    const fontSize = "h5";
     return (
-        <Breadcrumbs sx={{mb: "10px"}}>
+        <Breadcrumbs>
             <Link to="/" underline="hover"
                   sx={{ display: 'flex', alignItems: 'center' }}
                   color="inherit"

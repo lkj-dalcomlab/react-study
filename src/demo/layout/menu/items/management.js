@@ -6,10 +6,8 @@ const management = {
     type: "group",
     children: [
         {
-            id: MENU.MANAGED_SERVER,
             title: "Server",
-            type: "item",
-            path: "/management/server",
+            type: "nestedList",
             icon: CloudServerOutlined
         }
     ]

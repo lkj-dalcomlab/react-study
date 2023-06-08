@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 export const MENU = {
     HOME: 'Home',
-    MANAGED_SERVER: 'ManagedServer',
+    MANAGED_HOST: 'ManagedHost',
     CHART_EXAMPLE: 'ChartExample',
     GRID_EXAMPLE: 'GridExample'
 }

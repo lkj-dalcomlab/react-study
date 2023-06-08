@@ -5,10 +5,9 @@ import {AppBar, Grid, IconButton, Toolbar, useMediaQuery, useTheme} from "@mui/m
 import {styled} from "@mui/material/styles";
 import {menuWidth} from "../config/config";
 import SelectLayout from "./combobox/SelectLayout";
-import {useCallback, useEffect, useMemo} from "react";
-import BreadCrumb from "./navigation/BreadCrumb";
 import {useDispatch, useSelector} from "react-redux";
 import {changeMode} from "../reducer/themeMode";
+import BreadCrumb from "./navigation/BreadCrumb";
 
 export default function HeaderLayout({menuOpen, onOpen}) {
     const {mode} = useSelector(state => state.themeMode);
@@ -40,13 +39,16 @@ export default function HeaderLayout({menuOpen, onOpen}) {
             <Grid container sx={{
                 justifyContent:"space-between", alignItems:"center", margin:"10px 0", height:"60px", pl:"10px"
             }}>
-                <IconButton aria-label="open drawer" edge="start" onClick={onOpen}
-                            sx={{ marginRight: "20px",
-                                border: `1px solid ${theme.palette.secondary.main}`
-                            }}
-                >
-                    {!menuOpen ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-                </IconButton>
+                <Grid sx={{display:"flex", flexDirection:"row", justifyContent:"space-between", alignItems:"center"}}>
+                    <IconButton aria-label="open drawer" edge="start" onClick={onOpen}
+                                sx={{ marginRight: "20px",
+                                    border: `1px solid ${theme.palette.secondary.main}`
+                                }}
+                    >
+                        {!menuOpen ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                    </IconButton>
+                    <BreadCrumb/>
+                </Grid>
                 <Grid sx={{display:"flex", flexDirection:"row", justifyContent:"space-between", alignItems:"center"}}>
                     {mode === 'dark' ? <IconButton onClick={changeLightMode}><LightModeIcon/></IconButton> :
                         <IconButton onClick={changeDarkMode}><DarkModeIcon/></IconButton>}

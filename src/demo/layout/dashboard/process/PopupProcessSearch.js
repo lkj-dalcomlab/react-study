@@ -21,7 +21,7 @@ export default function PopupProcessSearch() {
     const dispatch = useDispatch();
 
     const loadProcessList = () => {
-        fetch(config.serverAddr)
+        fetch(config.serverAddr + "/process")
             .then(res => res.json())
             .then(result => {
                 dispatch(updateCategories(result.categories));

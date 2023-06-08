@@ -6,9 +6,7 @@ export default function MenuContents() {
     // TODO: console.log("menu contents rendering");
     const contents = menuItems.map((item, index)=> {
         return (
-            <Box key={index}>
-                <NavGroup groupItem={item}/>
-            </Box>
+            <NavGroup groupItem={item} key={index}/>
         )
     });
     return (
