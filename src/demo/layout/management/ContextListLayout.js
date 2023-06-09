@@ -3,9 +3,10 @@ import CustomNoRowsOverlay from "../dashboard/process/table/mui/CustomNoRowsOver
 import Box from "@mui/material/Box";
 import * as React from "react";
 import {useState} from "react";
-import {IconButton, Tooltip, Typography} from "@mui/material";
+import {Button, IconButton, Tooltip, Typography} from "@mui/material";
 import ModeIcon from '@mui/icons-material/Mode';
 import CustomPagination from "../dashboard/process/table/mui/CustomPagination";
+import PageviewIcon from '@mui/icons-material/Pageview';
 
 export default function ContextListLayout({contextList, editContext}) {
     const rows = [];
@@ -27,15 +28,24 @@ export default function ContextListLayout({contextList, editContext}) {
 
     const CellTooltip = (params) => (
         <Tooltip title={<Typography fontsize={20}>{params.value}</Typography>} placement="bottom-start">
-            <span style={{wordBreak: "break-all"}}>{params.value}</span>
+            <span style={{overflow: "scroll"}}>{params.value}</span>
         </Tooltip>
     );
+
+    const AttibuteCell = (params) => (
+        <div sx={{margin:"0 auto"}}>
+            <Button variant="outlined" endIcon={<PageviewIcon sx={{mb: "3px"}}/>} >
+                {params.value.length}
+            </Button>
+        </div>
+    )
 
     const columns = [
         { field: 'id', headerName: 'No', minWidth: 90, flex: 0.5 },
         {
             field: 'ContextPath',
             headerName: 'Context Path',
+            headerAlign: 'center',
             minWidth: 150,
             flex: 1,
             editable: false,
@@ -44,6 +54,7 @@ export default function ContextListLayout({contextList, editContext}) {
         {
             field: 'PhysicalPath',
             headerName: 'Physical Path',
+            headerAlign: 'center',
             minWidth: 100,
             flex: 1.2,
             renderCell: CellTooltip
@@ -51,13 +62,16 @@ export default function ContextListLayout({contextList, editContext}) {
         {
             field: 'Attributes',
             headerName: 'Attibutes',
+            headerAlign: 'center',
+            align: 'center',
             minWidth: 100,
             flex: 1.2,
-            renderCell: CellTooltip
+            renderCell: AttibuteCell
         },
         {
             field: 'ClassPath',
             headerName: 'Class Path',
+            headerAlign: 'center',
             minWidth: 100,
             flex: 1.2,
             renderCell: CellTooltip
@@ -65,9 +79,10 @@ export default function ContextListLayout({contextList, editContext}) {
         {
             field: 'Edit',
             headerName: 'Edit',
+            headerAlign: 'center',
             minWidth: 70,
             flex: 0.3,
-            renderCell: (params: GridCellParams) => <EditButton {...params}/>
+            renderCell: (params) => <EditButton {...params}/>
         }
     ];
 
@@ -94,6 +109,7 @@ export default function ContextListLayout({contextList, editContext}) {
                 }}
                 rows={rows}
                 columns={columns}
+                // getRowHeight={() => 'auto'}
 
                 // checkboxSelection
 

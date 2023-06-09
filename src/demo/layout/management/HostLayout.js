@@ -71,7 +71,7 @@ export default function Host() {
         tabCtxList.map((ctx, idx)=> {
             const curIdx = idx+1;
                 return (
-                    <Tab label={<CtxLabel ctx={ctx}/>} value={curIdx + ""} icon={<ContextIcon ctx={ctx} idx={curIdx}/>} iconPosition="end" key={idx}/>
+                    <Tab label={<CtxLabel ctx={ctx}/>} value={curIdx + ""} icon={<ContextIcon ctx={ctx} idx={curIdx}/>} iconPosition="end" key={idx} wrapped/>
                 )
             }
         );
@@ -103,8 +103,8 @@ export default function Host() {
                         <Tabs
                             value={value}
                             onChange={handleChange}
-                            variant="fullWidth"
-                            scrollButtons
+                            variant="scrollable"
+                            scrollButtons="auto"
                             allowScrollButtonsMobile
                             selectionFollowsFocus
                             textColor="primary"
