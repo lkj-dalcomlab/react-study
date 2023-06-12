@@ -26,8 +26,8 @@ export default function Host() {
         fetch(config.serverAddr + "/contexts?host=" + params.name)
             .then(res => res.json())
             .then(result => {
-                console.log(result.contexts);
-                setContextList(result.contexts);
+                console.log(result.Contexts);
+                setContextList(result.Contexts);
             },(error)=> {
                 console.log(error);
             });
@@ -78,7 +78,7 @@ export default function Host() {
     const contextPanels = tabCtxList.map((ctx, idx)=> {
             const curIdx = idx+1;
             return (
-                <TabPanel value = {curIdx+""}>
+                <TabPanel value = {curIdx+""} key={idx}>
                     <ContextLayout ctx={ctx}/>
                 </TabPanel>
             )

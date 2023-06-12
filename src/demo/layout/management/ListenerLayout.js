@@ -1,18 +1,16 @@
-import {DataGrid, koKR} from "@mui/x-data-grid";
-import * as React from "react";
 import {useState} from "react";
+import {DataGrid, koKR} from "@mui/x-data-grid";
 import CustomPagination from "../dashboard/process/table/mui/CustomPagination";
 import CustomNoRowsOverlay from "../dashboard/process/table/mui/CustomNoRowsOverlay";
 import Box from "@mui/material/Box";
+import * as React from "react";
+import GridCellTooltip from "./GridCellTooltip";
 
-export default function ServletLayout({servlets}) {
+export default function ListenerLayout({listeners}) {
     const rows = [];
-    servlets.map((servlet, idx) => {
+    listeners.map((listener, idx) => {
         rows.push({
-            id:idx, Name:servlet.Name, Class:servlet.Class,
-            Mappings:servlet.Mappings, AsyncSupported:servlet.AsyncSupported,
-            Programmatic:servlet.Programmatic,
-            HitCount:servlet.HitCount, Count200:servlet.Count200, Count4xx:servlet.Count4xx, Count5xx:servlet.Count5xx
+            id:idx, Name:listener.Name, Class:listener.Class, Programmatic:listener.Programmatic
         });
         return '';
     });
@@ -24,53 +22,19 @@ export default function ServletLayout({servlets}) {
             headerName: 'Name',
             minWidth: 150,
             flex: 1,
-            editable: false
+            editable: false,
+            renderCell: GridCellTooltip
         },
         {
             field: 'Class',
             headerName: 'Class',
             minWidth: 100,
-            flex: 1.2
-        },
-        {
-            field: 'Mappings',
-            headerName: 'Mappings',
-            minWidth: 100,
-            flex: 1.2
-        },
-        {
-            field: 'AsyncSupported',
-            headerName: 'AsyncSupported',
-            minWidth: 120,
-            flex: 1.2
+            flex: 1.2,
+            renderCell: GridCellTooltip
         },
         {
             field: 'Programmatic',
             headerName: 'Programmatic',
-            minWidth: 100,
-            flex: 1.2
-        },
-        {
-            field: 'HitCount',
-            headerName: 'HitCount',
-            minWidth: 100,
-            flex: 1.2
-        },
-        {
-            field: 'Count200',
-            headerName: '200 count',
-            minWidth: 100,
-            flex: 1.2
-        },
-        {
-            field: 'Count4xx',
-            headerName: '4xx count',
-            minWidth: 100,
-            flex: 1.2
-        },
-        {
-            field: 'Count5xx',
-            headerName: '5xx count',
             minWidth: 100,
             flex: 1.2
         }
@@ -80,6 +44,7 @@ export default function ServletLayout({servlets}) {
         pageSize: 3,
         page: 0,
     });
+
 
     return (
         <Box sx={{ height: 400, width: '100%'}}>

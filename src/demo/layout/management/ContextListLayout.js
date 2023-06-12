@@ -3,10 +3,11 @@ import CustomNoRowsOverlay from "../dashboard/process/table/mui/CustomNoRowsOver
 import Box from "@mui/material/Box";
 import * as React from "react";
 import {useState} from "react";
-import {IconButton, Tooltip, Typography} from "@mui/material";
+import {IconButton} from "@mui/material";
 import ModeIcon from '@mui/icons-material/Mode';
 import CustomPagination from "../dashboard/process/table/mui/CustomPagination";
 import AttributesGrid from "./AttributesGrid";
+import GridCellTooltip from "./GridCellTooltip";
 
 export default function ContextListLayout({contextList, editContext}) {
     const rows = [];
@@ -27,12 +28,6 @@ export default function ContextListLayout({contextList, editContext}) {
         )
     }
 
-    const CellTooltip = (params) => (
-        <Tooltip title={<Typography fontsize={20}>{params.value}</Typography>} placement="bottom-start">
-            <span style={{overflow: "scroll"}}>{params.value}</span>
-        </Tooltip>
-    );
-
     const AttributeCell = (params) => (
         <div sx={{margin:"0 auto"}}>
             <AttributesGrid attributes={params.value} />
@@ -40,7 +35,7 @@ export default function ContextListLayout({contextList, editContext}) {
     )
 
     const columns = [
-        { field: 'id', headerName: 'No', minWidth: 90, flex: 0.5 },
+        { field: 'id', headerName: 'No', minWidth: 35, flex: 0.5 },
         {
             field: 'ContextPath',
             headerName: 'Context Path',
@@ -48,7 +43,7 @@ export default function ContextListLayout({contextList, editContext}) {
             minWidth: 150,
             flex: 1,
             editable: false,
-            renderCell: CellTooltip
+            renderCell: GridCellTooltip
         },
         {
             field: 'PhysicalPath',
@@ -56,7 +51,7 @@ export default function ContextListLayout({contextList, editContext}) {
             headerAlign: 'center',
             minWidth: 100,
             flex: 1.2,
-            renderCell: CellTooltip
+            renderCell: GridCellTooltip
         },
         {
             field: 'Attributes',
@@ -73,7 +68,7 @@ export default function ContextListLayout({contextList, editContext}) {
             headerAlign: 'center',
             minWidth: 100,
             flex: 1.2,
-            renderCell: CellTooltip
+            renderCell: GridCellTooltip
         },
         {
             field: 'Edit',
