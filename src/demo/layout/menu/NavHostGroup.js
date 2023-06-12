@@ -1,7 +1,6 @@
 import Collapse from "@mui/material/Collapse";
 import {List, ListItemButton, ListItemIcon, ListItemText, Typography, useTheme} from "@mui/material";
 import {ExpandLess, ExpandMore} from "@mui/icons-material";
-import FeedRoundedIcon from '@mui/icons-material/FeedRounded';
 import {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import config from "../../config/config";
@@ -17,7 +16,7 @@ export default function NavHostGroup({item}) {
 
     const textColor = 'text.primary';
     const iconSelectedColor = 'primary.main';
-    const hoverColor = 'menuButton.primary';
+    const hoverColor = 'button.primary';
 
     const loadHostList = () => {
         fetch(config.serverAddr + "/hosts")

@@ -3,15 +3,16 @@ import CustomNoRowsOverlay from "../dashboard/process/table/mui/CustomNoRowsOver
 import Box from "@mui/material/Box";
 import * as React from "react";
 import {useState} from "react";
-import {Button, IconButton, Tooltip, Typography} from "@mui/material";
+import {IconButton, Tooltip, Typography} from "@mui/material";
 import ModeIcon from '@mui/icons-material/Mode';
 import CustomPagination from "../dashboard/process/table/mui/CustomPagination";
-import PageviewIcon from '@mui/icons-material/Pageview';
+import AttributesGrid from "./AttributesGrid";
 
 export default function ContextListLayout({contextList, editContext}) {
     const rows = [];
     contextList.map((context, idx)=> {
         rows.push({id:idx, ContextPath:context.ContextPath, PhysicalPath:context.PhysicalPath, Attributes:context.Attributes, ClassPath:context.ClassPath});
+        return '';
     });
 
     const EditButton = (params: GridCellParams)=> {
@@ -32,11 +33,9 @@ export default function ContextListLayout({contextList, editContext}) {
         </Tooltip>
     );
 
-    const AttibuteCell = (params) => (
+    const AttributeCell = (params) => (
         <div sx={{margin:"0 auto"}}>
-            <Button variant="outlined" endIcon={<PageviewIcon sx={{mb: "3px"}}/>} >
-                {params.value.length}
-            </Button>
+            <AttributesGrid attributes={params.value} />
         </div>
     )
 
@@ -66,7 +65,7 @@ export default function ContextListLayout({contextList, editContext}) {
             align: 'center',
             minWidth: 100,
             flex: 1.2,
-            renderCell: AttibuteCell
+            renderCell: AttributeCell
         },
         {
             field: 'ClassPath',

@@ -19,7 +19,7 @@ export default function NavItem({item}) {
 
     const textColor = 'text.primary';
     const iconSelectedColor = 'primary.main';
-    const hoverColor = 'menuButton.primary';
+    const hoverColor = 'button.primary';
     return (
         <ListItemButton /*{...listItemProps}*/ component={Link} to={item.path}
                         onClick ={() => menuHandler(item.id)}

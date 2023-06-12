@@ -6,14 +6,14 @@ import NavHostGroup from "./NavHostGroup";
 export default function NavGroup({groupItem}) {
     const menuOpen = useSelector(state => state.menuActor.menuOpen);
 
-    const items = groupItem.children.map((item)=> {
+    const items = groupItem.children.map((item, idx)=> {
         if (item.type === "nestedList") {
             return (
-                <NavHostGroup item={item} key={item.id}/>
+                <NavHostGroup item={item} key={idx}/>
             )
         }
         return (
-            <NavItem item={item} key={item.id}/>
+            <NavItem item={item} key={idx}/>
         )
     });
     return (

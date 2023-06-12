@@ -1,5 +1,4 @@
-import {Box, Grid, SwipeableDrawer, Tab, Tabs, tabsClasses} from "@mui/material";
-import {useTheme} from "@mui/material/styles";
+import {Box, Grid, Tab, tabsClasses} from "@mui/material";
 import {useState} from "react";
 import {TabContext, TabList, TabPanel} from "@mui/lab";
 import DiscountIcon from '@mui/icons-material/Discount';

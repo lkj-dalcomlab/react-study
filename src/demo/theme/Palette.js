@@ -16,7 +16,7 @@ const Palette = ({mode}) => {
                 // paper: mode === 'dark' ? paletteColors.grey[0] : paletteColors.grey[700],
                 default: mode === 'dark' ? paletteColors.grey[800] : paletteColors.grey.A50
             },
-            menuButton: {
+            button: {
                 primary: mode === 'dark' ? paletteColors.secondary.dark : paletteColors.primary.lighter
             },
             mode: mode

@@ -40,7 +40,7 @@ export default function ContextLayout({ctx}) {
                 console.log(error);
             });
     }
-    useEffect(loadContext, []);
+    useEffect(loadContext, [ctx]);
     return (
         <>
             <Grid sx={{pr: "20px"}}>

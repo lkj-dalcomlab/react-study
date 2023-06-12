@@ -1,4 +1,4 @@
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {selectMenuItem} from "../../reducer/menuActor";
 import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
@@ -13,7 +13,6 @@ import ContextLayout from "./ContextLayout";
 import {Close} from "@mui/icons-material";
 
 export default function Host() {
-    const {selectMenuId} = useSelector(state => state.menuActor);
     const dispatch = useDispatch();
     const params = useParams();
 
@@ -36,7 +35,7 @@ export default function Host() {
 
     useEffect(()=> {
         loadContextList();
-    }, [selectMenuId]);
+    }, []);
 
     const [value, setValue] = useState('0');
 

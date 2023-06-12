@@ -1,19 +1,20 @@
-import {DataGrid, GridCellParams, koKR} from "@mui/x-data-grid";
+import {DataGrid, koKR} from "@mui/x-data-grid";
 import * as React from "react";
+import {useState} from "react";
 import CustomPagination from "../dashboard/process/table/mui/CustomPagination";
 import CustomNoRowsOverlay from "../dashboard/process/table/mui/CustomNoRowsOverlay";
 import Box from "@mui/material/Box";
-import {useState} from "react";
 
 export default function ServletLayout({servlets}) {
     const rows = [];
-    servlets.map((servlet, idx)=> {
+    servlets.map((servlet, idx) => {
         rows.push({
             id:idx, name:servlet.name, class:servlet.class,
             mappings:servlet.mappings, asyncSupported:servlet.asyncSupported,
             programmatic:servlet.programmatic,
             hitCount:servlet.hitCount, count200:servlet.count200, count4xx:servlet.count4xx, count5xx:servlet.count5xx
         });
+        return '';
     });
 
     const columns = [
