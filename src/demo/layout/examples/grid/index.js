@@ -1,6 +1,7 @@
-import {Box, Grid} from "@mui/material";
+import {Box, Grid, TextField} from "@mui/material";
 import {useDispatch, useSelector} from "react-redux";
 import {MENU, selectMenuItem} from "../../../reducer/menuActor";
+import {useState} from "react";
 
 export default function GridLayout() {
     const {selectMenuId} = useSelector(state => state.menuActor);
@@ -8,6 +9,14 @@ export default function GridLayout() {
     if (selectMenuId !== MENU.GRID_EXAMPLE) {
         dispatch(selectMenuItem({selectMenuId: MENU.GRID_EXAMPLE}));
     }
+
+    const [name, setName] = useState();
+
+    const changeName = (e) => {
+        setName(e.target.value);
+    }
+
+    // const Icon =
 
     return (
         <>
@@ -28,9 +37,11 @@ export default function GridLayout() {
 
             <div style={{width:"50px", backgroundColor: "blue"}}>
                 <p style={{wordBreak: "break-all"}}>
-                    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                 </p>
             </div>
+
+            <TextField id="outlined-basic" label="Outlined" variant="outlined" value={name} onChange={changeName}/>
+            <p>{name}</p>
         </>
     )
 }

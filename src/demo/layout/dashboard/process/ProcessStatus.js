@@ -18,12 +18,12 @@ export default function ProcessStatus() {
 
     return (
         <>
-            <Grid container spacing={1}>
+            <Grid container spacing={5}>
             {
                 (selectedPIDs.length > 0) &&
                 selectedPIDs.map(pid=> {
                     return (
-                        <Grid item xs={6}>
+                        <Grid item xs={3}>
                             <Card sx={boxStyle}>
                                 <ProcessGraph pid={pid}/>
                             </Card>

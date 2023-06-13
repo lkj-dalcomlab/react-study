@@ -12,7 +12,7 @@ export default function ProcessLayout() {
     const dispatch = useDispatch();
 
     const loadProcessList = () => {
-        fetch(config.serverAddr + "/process")
+        fetch(/*config.serverAddr +*/ "http://localhost:8088/process")
             .then(res => res.json())
             .then(result => {
                 dispatch(updateCategories(result.categories));

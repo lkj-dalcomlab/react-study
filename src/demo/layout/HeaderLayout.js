@@ -47,7 +47,7 @@ export default function HeaderLayout({menuOpen, onOpen}) {
                     >
                         {!menuOpen ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
                     </IconButton>
-                    <BreadCrumb/>
+                    {/*<BreadCrumb/>*/}
                 </Grid>
                 <Grid sx={{display:"flex", flexDirection:"row", justifyContent:"space-between", alignItems:"center"}}>
                     {mode === 'dark' ? <IconButton onClick={changeLightMode}><LightModeIcon/></IconButton> :

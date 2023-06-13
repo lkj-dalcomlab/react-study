@@ -57,22 +57,38 @@ export default function MuiTable() {
     }
 
     const columns = [
-        { field: 'id', headerName: 'PID', width: 90 },
+        {
+            field: 'id',
+            headerName: 'PID',
+            headerAlign: 'center',
+            align: 'center',
+            // flex: 0.3,
+            width: 90
+        },
         {
             field: 'cpuUsage',
-            headerName: 'CPU 사용률',
+            headerName: 'CPU Usage',
+            headerAlign: 'center',
+            align: 'center',
             width: 150,
+            // flex: 0.8,
             editable: false,
         },
         {
             field: 'memoryUsage',
-            headerName: 'Memory 사용률',
+            headerName: 'Memory Usage',
+            headerAlign: 'center',
+            align: 'center',
+            // flex: 0.8,
             width: 150,
             editable: false,
         },
         {
-            field: 'actions',
-            headerName: 'Actions',
+            field: 'remove',
+            headerName: 'Remove',
+            headerAlign: 'center',
+            align: 'center',
+            // flex: 0.5,
             width: 100,
             renderCell: (params: GridCellParams) => <DeleteButton {...params}/>
         }
