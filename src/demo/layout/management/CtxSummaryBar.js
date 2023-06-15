@@ -1,6 +1,6 @@
 import {styled} from "@mui/material/styles";
 import LinearProgress, {linearProgressClasses} from "@mui/material/LinearProgress";
-import {Box, Typography} from "@mui/material";
+import {Box, Grid, Typography} from "@mui/material";
 import {LinearProgressProps} from "@mui/material/LinearProgress";
 
 
@@ -9,18 +9,18 @@ export default function CtxSummaryBar({rate, color}) {
     if (color === 'warning') {// mui 버그로 인한 분기문 https://github.com/mui/material-ui/issues/29564
         textColor = 'warning.main';
     }
-    function LinearProgressWithLabel(props: LinearProgressProps) {
+    function LinearProgressWithLabel(props) {
         return (
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <Box sx={{ minWidth: 35}}>
+            <Grid container alignItems='center'>
+                <Grid item xs={3} sx={{ minWidth: 35, mr: '10px'}}>
                     <Typography variant="summaryRate" color={textColor}>{`${Math.round(
                         props.value,
                     )}%`}</Typography>
-                </Box>
-                <Box sx={{ width: '100%', ml: 1 }}>
+                </Grid>
+                <Grid item xs={12}>
                     <LinearProgress variant="determinate" {...props} />
-                </Box>
-            </Box>
+                </Grid>
+            </Grid>
         );
     }
 

@@ -31,9 +31,7 @@ export default function ContextSummary({summary}) {
                 {/*<Grid container justifyContent="center" alignItems="center" sx={{height: '100%'}}>*/}
                     <CardContentPadding>
                         <Typography variant="summaryTitle" color={theme.palette.text.primary}>{title + ' [ ' + count + ' ]'}</Typography>
-                        <Typography>
-                            <CtxSummaryBar rate={rate} color={mainColor}/>
-                        </Typography>
+                        <CtxSummaryBar rate={rate} color={mainColor}/>
                     </CardContentPadding>
                 {/*</Grid>*/}
             </Card>
