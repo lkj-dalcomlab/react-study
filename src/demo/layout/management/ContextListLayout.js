@@ -119,7 +119,7 @@ export default function ContextListLayout({contextList, editContext}) {
     })
 
     return (
-        <Box sx={{ height: 400, width: '100%', pr: '20px' }}>
+        <Box sx={{ height: 400, width: '100%'}}>
             <DataGrid
                 sx={{padding: '0 5px 0 5px',
                     ...(

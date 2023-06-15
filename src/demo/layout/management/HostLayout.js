@@ -11,12 +11,14 @@ import LabelIcon from '@mui/icons-material/Label';
 import {GridCellParams} from "@mui/x-data-grid";
 import ContextLayout from "./ContextLayout";
 import {Close} from "@mui/icons-material";
+import ContextSummary from "./ContextSummary";
 
 export default function Host() {
     const dispatch = useDispatch();
     const params = useParams();
 
     const [contextList, setContextList] = useState([]);
+    const [contextSummary, setContextSummary] = useState();
 
     useEffect(()=> {
         dispatch(selectMenuItem({selectMenuId: params.name}));
@@ -26,8 +28,9 @@ export default function Host() {
         fetch(config.serverAddr + "/contexts?host=" + params.name)
             .then(res => res.json())
             .then(result => {
-                console.log(result.Contexts);
+                console.log(result);
                 setContextList(result.Contexts);
+                setContextSummary(result.Summary);
             },(error)=> {
                 console.log(error);
             });
@@ -119,7 +122,14 @@ export default function Host() {
                         </Tabs>
 
                         <TabPanel value = "0">
-                            <ContextListLayout contextList={contextList} editContext={editContext}/>
+                            <Grid container spacing={3}>
+                                <Grid item xs={12}>
+                                    <ContextSummary summary={contextSummary}/>
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <ContextListLayout contextList={contextList} editContext={editContext}/>
+                                </Grid>
+                            </Grid>
                         </TabPanel>
                         {contextPanels}
                     </TabContext>
