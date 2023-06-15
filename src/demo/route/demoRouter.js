@@ -1,5 +1,5 @@
 import MainLayout from "../layout/MainLayout";
-import HostLayout from "../layout/management/HostLayout"
+import HostLayout from "../layout/management/host/HostLayout"
 import DashboardLayout from "../layout/dashboard";
 import ChartMain from "../layout/examples/chart";
 import GridLayout from "../layout/examples/grid";

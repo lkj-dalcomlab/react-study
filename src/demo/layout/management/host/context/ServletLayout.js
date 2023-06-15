@@ -1,8 +1,8 @@
 import {DataGrid, koKR} from "@mui/x-data-grid";
 import * as React from "react";
 import {useState} from "react";
-import CustomPagination from "../dashboard/process/table/mui/CustomPagination";
-import CustomNoRowsOverlay from "../dashboard/process/table/mui/CustomNoRowsOverlay";
+import CustomPagination from "../../../dashboard/process/table/mui/CustomPagination";
+import CustomNoRowsOverlay from "../../../dashboard/process/table/mui/CustomNoRowsOverlay";
 import Box from "@mui/material/Box";
 
 export default function ServletLayout({servlets}) {

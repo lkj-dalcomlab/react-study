@@ -2,13 +2,12 @@ import {Button, Dialog, DialogContent, DialogTitle, ListItem, Typography} from "
 import PageviewIcon from "@mui/icons-material/Pageview";
 import * as React from "react";
 import {useState} from "react";
-import GridCellTooltip from "./GridCellTooltip";
-import CustomPagination from "../dashboard/process/table/mui/CustomPagination";
-import CustomNoRowsOverlay from "../dashboard/process/table/mui/CustomNoRowsOverlay";
+import GridCellTooltip from "../GridCellTooltip";
+import CustomPagination from "../../dashboard/process/table/mui/CustomPagination";
+import CustomNoRowsOverlay from "../../dashboard/process/table/mui/CustomNoRowsOverlay";
 import {DataGrid, koKR} from "@mui/x-data-grid";
 
 export default function AttributesGrid({attributes}) {
-    console.log(attributes)
     const rows = [];
     attributes.map((attribute, idx)=> {
         rows.push({

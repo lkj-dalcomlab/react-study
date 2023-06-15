@@ -1,13 +1,13 @@
 import {DataGrid, GridCellParams, koKR} from "@mui/x-data-grid";
-import CustomNoRowsOverlay from "../dashboard/process/table/mui/CustomNoRowsOverlay";
+import CustomNoRowsOverlay from "../../dashboard/process/table/mui/CustomNoRowsOverlay";
 import Box from "@mui/material/Box";
 import * as React from "react";
 import {useState} from "react";
 import {Chip, IconButton} from "@mui/material";
 import ModeIcon from '@mui/icons-material/Mode';
-import CustomPagination from "../dashboard/process/table/mui/CustomPagination";
+import CustomPagination from "../../dashboard/process/table/mui/CustomPagination";
 import AttributesGrid from "./AttributesGrid";
-import GridCellTooltip from "./GridCellTooltip";
+import GridCellTooltip from "../GridCellTooltip";
 import DoneIcon from '@mui/icons-material/Done';
 import DoDisturbIcon from '@mui/icons-material/DoDisturb';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';

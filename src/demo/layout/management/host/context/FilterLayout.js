@@ -1,16 +1,17 @@
 import {useState} from "react";
 import {DataGrid, koKR} from "@mui/x-data-grid";
-import CustomPagination from "../dashboard/process/table/mui/CustomPagination";
-import CustomNoRowsOverlay from "../dashboard/process/table/mui/CustomNoRowsOverlay";
+import CustomPagination from "../../../dashboard/process/table/mui/CustomPagination";
+import CustomNoRowsOverlay from "../../../dashboard/process/table/mui/CustomNoRowsOverlay";
 import Box from "@mui/material/Box";
 import * as React from "react";
-import GridCellTooltip from "./GridCellTooltip";
+import GridCellTooltip from "../../GridCellTooltip";
 
-export default function ListenerLayout({listeners}) {
+export default function FilterLayout({filters}) {
     const rows = [];
-    listeners.map((listener, idx) => {
+    filters.map((filter, idx) => {
         rows.push({
-            id:idx, Name:listener.Name, Class:listener.Class, Programmatic:listener.Programmatic
+            id:idx, Name:filter.Name, Class:filter.Class, Annotation:filter.Annotation,
+            AsyncSupported:filter.AsyncSupported, Programmatic:filter.Programmatic
         });
         return '';
     });
@@ -31,6 +32,18 @@ export default function ListenerLayout({listeners}) {
             minWidth: 100,
             flex: 1.2,
             renderCell: GridCellTooltip
+        },
+        {
+            field: 'Annotation',
+            headerName: 'Annotation',
+            minWidth: 100,
+            flex: 1.2
+        },
+        {
+            field: 'AsyncSupported',
+            headerName: 'AsyncSupported',
+            minWidth: 120,
+            flex: 1.2
         },
         {
             field: 'Programmatic',

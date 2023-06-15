@@ -1,15 +1,15 @@
 import {useDispatch} from "react-redux";
-import {selectMenuItem} from "../../reducer/menuActor";
+import {selectMenuItem} from "../../../reducer/menuActor";
 import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import config from "../../config/config";
+import config from "../../../config/config";
 import ContextListLayout from "./ContextListLayout";
 import {Grid, IconButton, Tab, Tabs, tabsClasses} from "@mui/material";
 import {TabContext, TabPanel} from "@mui/lab";
 import StorageIcon from '@mui/icons-material/Storage';
 import LabelIcon from '@mui/icons-material/Label';
 import {GridCellParams} from "@mui/x-data-grid";
-import ContextLayout from "./ContextLayout";
+import ContextLayout from "./context/ContextLayout";
 import {Close} from "@mui/icons-material";
 import ContextSummary from "./ContextSummary";
 

@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import config from "../../config/config";
+import config from "../../../../config/config";
 import {Accordion, Grid, Typography} from "@mui/material";
 import ServletLayout from "./ServletLayout";
 import MuiAccordionSummary, {AccordionSummaryProps,} from '@mui/material/AccordionSummary';
