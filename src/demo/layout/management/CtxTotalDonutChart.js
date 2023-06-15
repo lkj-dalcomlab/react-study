@@ -15,7 +15,7 @@ export default function CtxTotalDonutChart({summary}) {
                 margin: 5,
                 style: {
                     fontSize:  '14px',
-                    fontWeight:  'inherit',
+                    fontWeight:  'bold',
                     fontFamily:  'Helvetica, Arial, sans-serif',
                     color: theme.palette.text.primary
                 },
@@ -39,22 +39,10 @@ export default function CtxTotalDonutChart({summary}) {
             },
             chart: {
                 type: 'donut',
-                height: 350,
                 zoom: {
                     enabled: false
                 }
             },
-            responsive: [{
-                breakpoint: 480,
-                options: {
-                    chart: {
-                        width: 200,
-                    },
-                    legend: {
-                        position: 'bottom'
-                    }
-                }
-            }],
             stroke: {
                 colors: ['rgba(0,0,0,0)']
             },
@@ -69,8 +57,8 @@ export default function CtxTotalDonutChart({summary}) {
                             value: {
                                 show: true,
                                 color: theme.palette.text.primary,
-                                fontSize: '25px',
-                                offsetY: '-10px',
+                                fontSize: '2rem',
+                                offsetY: '-5rem',
                                 formatter: function (val) {
                                     return 'val'
                                 }
@@ -92,6 +80,6 @@ export default function CtxTotalDonutChart({summary}) {
     };
 
     return (
-        <Chart style={{marginTop: "0px"}} options={data.options} series={data.series} type="donut"/>
+        <Chart style={{marginTop: "0px"}} options={data.options} series={data.series} height="100%" type="donut"/>
     )
 }
