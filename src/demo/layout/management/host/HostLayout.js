@@ -25,7 +25,7 @@ export default function Host() {
     });
 
     const loadContextList = ()=> {
-        fetch(config.serverAddr + "/contexts?host=" + params.name)
+        fetch(config.serverAddr + "/host?name=" + params.name)
             .then(res => res.json())
             .then(result => {
                 console.log(result);
