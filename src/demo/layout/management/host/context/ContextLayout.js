@@ -8,6 +8,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import {styled} from "@mui/material/styles";
 import FilterLayout from "./FilterLayout";
 import ListenerLayout from "./ListenerLayout";
+import ContextDashboard from "./ContextDashboard";
 
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
     <MuiAccordionSummary
@@ -49,7 +50,11 @@ export default function ContextLayout({ctx}) {
     useEffect(loadContext, [ctx]);
     return (
         <>
-            <Grid sx={{pr: "20px"}}>
+            <Grid container spacing={2} sx={{pr: "20px"}}>
+                <Grid item xs={12}>
+                <ContextDashboard servletCount={servlets.length} filterCount={filters.length} listenerCount={listeners.length}/>
+                </Grid>
+                <Grid item xs={12}>
                 <Accordion>
                     <AccordionSummary
                         expandIcon={<ArrowForwardIosIcon/>}
@@ -64,6 +69,8 @@ export default function ContextLayout({ctx}) {
                         </Grid>
                     </AccordionDetails>
                 </Accordion>
+                </Grid>
+                <Grid item xs={12}>
                 <Accordion>
                     <AccordionSummary
                         expandIcon={<ArrowForwardIosIcon/>}
@@ -78,6 +85,8 @@ export default function ContextLayout({ctx}) {
                         </Grid>
                     </AccordionDetails>
                 </Accordion>
+                </Grid>
+                <Grid item xs={12}>
                 <Accordion>
                     <AccordionSummary
                         expandIcon={<ArrowForwardIosIcon/>}
@@ -92,6 +101,7 @@ export default function ContextLayout({ctx}) {
                         </Grid>
                     </AccordionDetails>
                 </Accordion>
+                </Grid>
             </Grid>
         </>
     )

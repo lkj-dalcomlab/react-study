@@ -19,6 +19,9 @@ const Palette = ({mode}) => {
             button: {
                 primary: mode === 'dark' ? paletteColors.secondary.dark : paletteColors.primary.lighter
             },
+            chart: {
+                radialBar: mode === 'dark' ? paletteColors.grey[0] : paletteColors.grey[200]
+            },
             mode: mode
         }
     });
