@@ -56,16 +56,16 @@ export default function ContextSummary({summary}) {
 
     return (
         <Grid container spacing={2} direction="row" justifyContent="center" alignItems="flex-end">
-            <Grid item xs={3}>
+            <Grid item xs={2.4}>
                 <TotalContexts/>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={3.2}>
                 <Summary title={"Load Summary"} count={loadCount} rate={loadRate} mainColor="primary"/>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={3.2}>
                 <Summary title={"Unload Summary"} count={unloadCount} rate={unloadRate} mainColor="warning"/>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={3.2}>
                 <Summary title={"Error Summary"} count={errorCount} rate={errorRate} mainColor="error"/>
             </Grid>
         </Grid>
