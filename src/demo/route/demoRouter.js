@@ -3,6 +3,7 @@ import HostLayout from "../layout/management/host/HostLayout"
 import DashboardLayout from "../layout/dashboard";
 import ChartMain from "../layout/examples/chart";
 import GridLayout from "../layout/examples/grid";
+import ServiceLayout from "../layout/management/service/ServiceLayout";
 
 const demoRouter = [
     {
@@ -12,6 +13,10 @@ const demoRouter = [
             {
                 path: "/",
                 element: <DashboardLayout/>
+            },
+            {
+                path: "management/service/:name",
+                element: <ServiceLayout/>,
             },
             {
                 path: "management/host/:name",

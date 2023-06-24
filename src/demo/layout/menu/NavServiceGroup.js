@@ -2,24 +2,24 @@ import Collapse from "@mui/material/Collapse";
 import {List, ListItemButton, ListItemIcon, ListItemText, Typography, useTheme} from "@mui/material";
 import {ExpandLess, ExpandMore} from "@mui/icons-material";
 import {useState} from "react";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import config from "../../config/config";
-import {useSelector} from "react-redux";
 import StorageIcon from "@mui/icons-material/Storage";
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 
-export default function NavHostGroup({item}) {
+export default function NavServiceGroup({serviceItem}) {
+    console.log('serviceItem: ' + serviceItem);
     const theme = useTheme();
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
     const [hostList, setHostList] = useState([]);
-    const Icon = item.icon;
 
     const textColor = 'text.primary';
     const iconSelectedColor = 'primary.main';
     const hoverColor = 'button.primary';
 
     const loadHostList = () => {
-        fetch(config.serverAddr + "/hosts")
+        fetch(config.serverAddr + "/hosts?service=" + serviceItem)
             .then(res => res.json())
             .then(result => {
                 console.log(result.hosts);
@@ -48,20 +48,21 @@ export default function NavHostGroup({item}) {
         }
     };
     const handleClick = () => {
+        // navigate('examples/chart');
         if (!open) {
             loadHostList();
         }
         setOpen(!open);
     }
-    const {selectMenuId} = useSelector(state => state.menuActor);
+    // const {selectMenuId} = useSelector(state => state.menuActor);
     const HostItems = () => {
         let rst = hostList.map((item, idx) => {
-            const isSelected = item === selectMenuId;
+            // const isSelected = item === selectMenuId;
             return (
                 <ListItemButton onClick={()=> navigate('management/host/' + item)} key={idx}
-                    selected={isSelected}
+                    // selected={isSelected}
                     sx={{
-                        pl: 4,
+                        pl: 6,
                         ...listBtnStyle
                     }}
                 >
@@ -89,13 +90,14 @@ export default function NavHostGroup({item}) {
         return rst;
     };
 
+    // const serviceItemSelected = serviceItem === selectMenuId;
     //'&.Mui-selected' sytle은 ListItemButton의 selected 옵션이 있어야 적용이 된다.
     return (
         <>
-            <ListItemButton component={Link}
+            <ListItemButton //selected={serviceItemSelected}
                        onClick ={handleClick}
                        sx={{
-                           pl: `28px`,
+                           pl: 5,
                            ...listBtnStyle
                        }}>
                 <ListItemIcon className="itemIcon"
@@ -103,7 +105,7 @@ export default function NavHostGroup({item}) {
                                   minWidth: 28,
                                   color: textColor
                               }}>
-                    <Icon style={{ fontSize: '1rem' }} />
+                    <LibraryBooksIcon style={{ fontSize: '1rem' }} />
                 </ListItemIcon>
                 <ListItemText
                     primary={
@@ -112,7 +114,7 @@ export default function NavHostGroup({item}) {
                                         color: textColor
                                     }}
                         >
-                            {item.title}
+                            {serviceItem}
                         </Typography>
                     }
                 />
@@ -120,7 +122,7 @@ export default function NavHostGroup({item}) {
             </ListItemButton>
             <Collapse in={open} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                    <HostItems/>
+                    <HostItems hostList={hostList}/>
                 </List>
             </Collapse>
         </>
